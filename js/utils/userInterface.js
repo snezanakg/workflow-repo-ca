@@ -1,7 +1,7 @@
-export const isActivePath = (href, currentPath) => {
-  if (href === "/") {
-    return currentPath === "/" || currentPath === "/index.html";
-  } else {
-    return currentPath.includes(href);
-  }
-};
+export function isActivePath(currentPath, href) {
+  const normalize = (path) => (path === "/index.html" ? "/" : path);
+  return (
+    normalize(currentPath) === normalize(href) ||
+    normalize(currentPath).includes(normalize(href))
+  );
+}
